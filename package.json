@@ -1,0 +1,25 @@
+{
+  "name": "fds",
+  "displayName": "FDS",
+  "description": "FDS Programming Language",
+  "version": "0.0.1",
+  "engines": {
+    "vscode": "^1.71.0"
+  },
+  "categories": [
+    "Programming Languages"
+  ],
+  "contributes": {
+    "languages": [{
+      "id": "fds",
+      "aliases": ["FDS", "fds"],
+      "extensions": [".f"],
+      "configuration": "./language-configuration.json"
+    }],
+    "grammars": [{
+      "language": "fds",
+      "scopeName": "source.f",
+      "path": "./syntaxes/fds.tmLanguage.json"
+    }]
+  }
+}
