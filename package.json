@@ -2,6 +2,7 @@
   "name": "fds",
   "displayName": "FDS",
   "description": "FDS Programming Language",
+  "icon": "images/icon.png",
   "version": "0.0.1",
   "repository": {
     "type": "git",
@@ -11,7 +12,8 @@
     "vscode": "^1.71.0"
   },
   "categories": [
-    "Programming Languages"
+    "Programming Languages",
+    "Themes"
   ],
   "contributes": {
     "languages": [
@@ -33,6 +35,13 @@
         "language": "fds",
         "scopeName": "source.f",
         "path": "./syntaxes/fds.tmLanguage.json"
+      }
+    ],
+    "themes": [
+      {
+        "label": "fds-theme",
+        "uiTheme": "vs-dark",
+        "path": "./themes/fds-theme-color-theme.json"
       }
     ]
   }
