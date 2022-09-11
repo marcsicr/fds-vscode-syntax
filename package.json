@@ -3,6 +3,10 @@
   "displayName": "FDS",
   "description": "FDS Programming Language",
   "version": "0.0.1",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/marcsicr/fds-vscode-syntax.git"
+  },
   "engines": {
     "vscode": "^1.71.0"
   },
@@ -10,16 +14,26 @@
     "Programming Languages"
   ],
   "contributes": {
-    "languages": [{
-      "id": "fds",
-      "aliases": ["FDS", "fds"],
-      "extensions": [".f"],
-      "configuration": "./language-configuration.json"
-    }],
-    "grammars": [{
-      "language": "fds",
-      "scopeName": "source.f",
-      "path": "./syntaxes/fds.tmLanguage.json"
-    }]
+    "languages": [
+      {
+        "id": "fds",
+        "aliases": [
+          "FDS",
+          "fds"
+        ],
+        "extensions": [
+          ".f",
+          ".r"
+        ],
+        "configuration": "./language-configuration.json"
+      }
+    ],
+    "grammars": [
+      {
+        "language": "fds",
+        "scopeName": "source.f",
+        "path": "./syntaxes/fds.tmLanguage.json"
+      }
+    ]
   }
 }
