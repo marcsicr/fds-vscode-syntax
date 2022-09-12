@@ -15,6 +15,16 @@
     "Programming Languages",
     "Themes"
   ],
+  "editor.tokenColorCustomizations": {
+    "textMateRules": [
+      {
+        "scope": "kdocs.fds",
+        "settings": {
+          "foreground": "#33f"
+        }
+      }
+    ]
+  },
   "contributes": {
     "languages": [
       {

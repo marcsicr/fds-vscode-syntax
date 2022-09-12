@@ -1,0 +1,14 @@
+
+{
+  "editor.tokenColorCustomizations": {
+    "textMateRules": [
+        {
+            "scope": "kdocs.fds",
+            "settings": {
+                "foreground": "#33f"
+            }
+        }
+    ]
+  }
+  
+}

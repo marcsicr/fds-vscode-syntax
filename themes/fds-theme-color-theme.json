@@ -59,6 +59,15 @@
 			}
 		},
 		{
+			"name": "Kdocs test",
+			"scope": [
+				"kdocs.fds"
+			],
+			"settings": {
+				"foreground": "#ff03dd"
+			}
+		},
+		{
 			"name": "Operator, Misc",
 			"scope": [
 				"keyword.control",

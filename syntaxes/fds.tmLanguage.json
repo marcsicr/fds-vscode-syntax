@@ -7,6 +7,12 @@
     },
     {
       "include": "#strings"
+    },
+    {
+      "include": "#type-name"
+    },
+    {
+      "include": "#comments"
     }
   ],
   "repository": {
@@ -14,7 +20,7 @@
       "patterns": [
         {
           "name": "keyword.control.fds",
-          "match": "\\b(if|while|for|return)\\b"
+          "match": "\\b(if|else|do|endif|while|done|for|gosub|return)\\b"
         }
       ]
     },
@@ -26,6 +32,19 @@
         {
           "name": "constant.character.escape.fds",
           "match": "\\\\."
+        }
+      ]
+    },
+    "comments": {
+      "patterns": [
+        {
+          "name": "comment.line.double-slash.fds",
+          "match": "^[.]+.*$"
+        },
+        {
+          "name": "comment.line.double-slash.fds",
+          "begin": "/[*]+",
+          "end": "$"
         }
       ]
     }
