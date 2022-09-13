@@ -9,29 +9,114 @@
       "include": "#strings"
     },
     {
-      "include": "#type-name"
+      "include": "#constants"
     },
     {
       "include": "#comments"
+    },
+    {
+      "include": "#tags"
+    },
+    {
+      "include": "#variables"
+    },
+    {
+      "include": "#jumptags"
+    },
+    {
+      "include": "#file"
     }
   ],
   "repository": {
+    "file": {
+      "patterns": [
+        {
+          "match": "(!file)\\s([\\w]+)\\s([@\\w]+)((\\s(dbs)[=]([\\w]+)))?",
+          "captures": {
+            "1": { "name": "support.function.fds" },
+            "2": { "name": "entity.name.type.fds" },
+            "3": { "name": "support.struct..fds" }
+          }
+        }
+      ]
+    },
+
+    "jumptags": {
+      "patterns": [
+        {
+          "match": "(goto|gosub)\\s([\\w]+$)",
+          "captures": {
+            "1": { "name": "keyword.control.fds" },
+            "2": { "name": "entity.name.tag.fds" }
+          }
+        }
+      ]
+    },
+
+    "variables": {
+      "patterns": [
+        {
+          "match": "(!temp)\\s([\\w^,]+)(,[\\s]*,)(a\\d+|i\\d+|dc|r8|d4)",
+          "captures": {
+            "1": { "name": "support.function.fds" },
+            "2": { "name": "entity.name.type.fds" },
+            "4": { "name": "variable.language.fds" }
+          }
+        },
+        {
+          "match": "^[+]([\\w^,]+),",
+          "captures": {
+            "1": { "name": "entity.name.type.fds" }
+          }
+        }
+      ]
+    },
     "keywords": {
       "patterns": [
         {
           "name": "keyword.control.fds",
-          "match": "\\b(if|else|do|endif|while|done|for|gosub|return)\\b"
+          "match": "\\b(if|else|do|then|endif|while|continue|done|for|switch|return)\\b"
+        }
+      ]
+    },
+    "tags": {
+      "patterns": [
+        {
+          "match": "^(.*)([\\t]|\\\\$)",
+          "captures": { "1": { "name": "entity.name.tag.fds" } }
+        }
+      ]
+    },
+    "constants": {
+      "patterns": [
+        {
+          "name": "constant.language.fds",
+          "match": "\\b(_NSR|NEXT|BREAK)\\b"
         }
       ]
     },
     "strings": {
-      "name": "string.quoted.double.fds",
-      "begin": "\"",
-      "end": "\"",
       "patterns": [
         {
-          "name": "constant.character.escape.fds",
-          "match": "\\\\."
+          "name": "string.quoted.double.fds",
+          "begin": "\"",
+          "end": "\"",
+          "patterns": [
+            {
+              "name": "constant.character.escape.fds",
+              "match": "\\\\."
+            }
+          ]
+        },
+        {
+          "name": "string.quoted.single.fds",
+          "match": "'.*'",
+          "patterns": [
+            {
+              "name": "constant.character.escape.fds",
+              "match": "\\\\."
+            }
+          ]
         }
       ]
     },
@@ -49,5 +134,6 @@
       ]
     }
   },
+
   "scopeName": "source.f"
 }
