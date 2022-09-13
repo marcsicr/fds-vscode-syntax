@@ -21,28 +21,90 @@
       "include": "#variables"
     },
     {
-      "include": "#jumptags"
-    },
-    {
       "include": "#file"
     }
   ],
   "repository": {
+    "comments": {
+      "patterns": [
+        {
+          "name": "comment.line.double-slash.fds",
+          "match": "^[.]+.*$"
+        },
+        {
+          "name": "comment.line.double-slash.fds",
+          "begin": "/[*]+",
+          "end": "$"
+        }
+      ]
+    },
     "file": {
       "patterns": [
         {
-          "match": "(!file)\\s([\\w]+)\\s([@\\w]+)((\\s(dbs)[=]([\\w]+)))?",
+          "match": "(!x?file)\\s([\\w]+)\\s([@\\w]+)((\\s(dbs)[=]([\\w]+)))?",
           "captures": {
             "1": { "name": "support.function.fds" },
             "2": { "name": "entity.name.type.fds" },
-            "3": { "name": "support.struct..fds" }
+            "3": { "name": "support.struct.fds" }
+          }
+        },
+        {
+          "match": "(!access)\\s(by)?",
+          "captures": {
+            "1": { "name": "support.function.fds" },
+            "2": { "name": "keyword.other.fds" }
           }
         }
       ]
     },
 
-    "jumptags": {
+    "variables": {
       "patterns": [
+        {
+          "match": "(!temp|!constant)\\s([\\w^,]+),([.:'\\s\\w]*)?,(a\\d+|i\\d+|dc|m8|r8|d4)(,[\\w]+)?",
+          "captures": {
+            "0": { "name": "meta.definition.variable" },
+            "1": { "name": "support.function.fds" },
+            "2": { "name": "variable.other.definition.fds" },
+            "3": { "name": "string.unquoted.fds" },
+            "4": { "name": "storage.type.primitive.fds" },
+            "5": {
+              "patterns": [
+                {
+                  "match": ",([\\w]+)",
+                  "captures": {
+                    "1": {
+                      "name": "string.regexp.fds"
+                    }
+                  }
+                }
+              ]
+            }
+          }
+        },
+        {
+          "match": "^[+]([\\w^,]+),([.:'\\s\\w]*),",
+          "captures": {
+            "1": { "name": "variable.other.definition.fds" },
+            "2": { "name": "string.unquoted.fds" }
+          }
+        }
+      ]
+    },
+    "keywords": {
+      "patterns": [
+        {
+          "name": "keyword.control.fds",
+          "match": "\\b(if|else|do|then|endif|while|continue|done|for|switch|return|exit)\\b"
+        },
+        {
+          "name": "keyword.operator",
+          "match": "\\b(and|or)\\b"
+        },
+        {
+          "name": "support.function.fds",
+          "match": "\\b(!window|!box|!heading)\\b"
+        },
         {
           "match": "(goto|gosub)\\s([\\w]+$)",
           "captures": {
@@ -52,37 +114,10 @@
         }
       ]
     },
-
-    "variables": {
-      "patterns": [
-        {
-          "match": "(!temp)\\s([\\w^,]+)(,[\\s]*,)(a\\d+|i\\d+|dc|r8|d4)",
-          "captures": {
-            "1": { "name": "support.function.fds" },
-            "2": { "name": "entity.name.type.fds" },
-            "4": { "name": "variable.language.fds" }
-          }
-        },
-        {
-          "match": "^[+]([\\w^,]+),",
-          "captures": {
-            "1": { "name": "entity.name.type.fds" }
-          }
-        }
-      ]
-    },
-    "keywords": {
-      "patterns": [
-        {
-          "name": "keyword.control.fds",
-          "match": "\\b(if|else|do|then|endif|while|continue|done|for|switch|return)\\b"
-        }
-      ]
-    },
     "tags": {
       "patterns": [
         {
-          "match": "^(.*)([\\t]|\\\\$)",
+          "match": "^(\\w*)([\\t]|\\\\$)",
           "captures": { "1": { "name": "entity.name.tag.fds" } }
         }
       ]
@@ -117,19 +152,6 @@
               "match": "\\\\."
             }
           ]
-        }
-      ]
-    },
-    "comments": {
-      "patterns": [
-        {
-          "name": "comment.line.double-slash.fds",
-          "match": "^[.]+.*$"
-        },
-        {
-          "name": "comment.line.double-slash.fds",
-          "begin": "/[*]+",
-          "end": "$"
         }
       ]
     }
