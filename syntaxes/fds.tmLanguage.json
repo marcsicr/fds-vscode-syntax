@@ -44,8 +44,8 @@
           "match": "(!x?file)\\s([\\w]+)\\s([@\\w]+)((\\s(dbs)[=]([\\w]+)))?",
           "captures": {
             "1": { "name": "support.function.fds" },
-            "2": { "name": "entity.name.type.fds" },
-            "3": { "name": "support.struct.fds" }
+            "2": { "name": "variable.other.definition.fds" },
+            "3": { "name": "entity.name.type.fds" }
           }
         },
         {
@@ -103,7 +103,7 @@
         },
         {
           "name": "support.function.fds",
-          "match": "\\b(!window|!box|!heading)\\b"
+          "match": "(!window|!box|!heading|!init|!final)"
         },
         {
           "match": "(goto|gosub)\\s([\\w]+$)",
