@@ -61,7 +61,7 @@
     "variables": {
       "patterns": [
         {
-          "match": "(!temp|!constant)\\s([\\w^,]+),([.:'\\s\\w]*)?,(a\\d+|i\\d+|dc|m8|r8|d4)(,[\\w]+)?",
+          "match": "(!temp|!constant)\\s([\\w^,]+),([.:'\\s\\w]*)?,(a\\d+|i\\d+|dc|m8|r8|d4),?([-.:#\\w]+)?",
           "captures": {
             "0": { "name": "meta.definition.variable" },
             "1": { "name": "support.function.fds" },
@@ -83,10 +83,22 @@
           }
         },
         {
-          "match": "^[+]([\\w^,]+),([.:'\\s\\w]*),",
+          "match": "^[+]([\\w^,]+),([.:'\\s\\w]*),?([.:#\\w]+)?",
           "captures": {
             "1": { "name": "variable.other.definition.fds" },
-            "2": { "name": "string.unquoted.fds" }
+            "2": { "name": "string.unquoted.fds" },
+            "3": {
+              "patterns": [
+                {
+                  "match": "([-.:#\\w]+)",
+                  "captures": {
+                    "0": {
+                      "name": "string.regexp.fds"
+                    }
+                  }
+                }
+              ]
+            }
           }
         }
       ]
