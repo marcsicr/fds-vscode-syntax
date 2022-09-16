@@ -1,13 +1,14 @@
 {
   "name": "fds",
   "displayName": "FDS",
-  "description": "FDS Programming Language",
+  "description": "FDS Syntax Colors",
   "icon": "images/icon.png",
   "version": "0.0.1",
   "repository": {
     "type": "git",
     "url": "https://github.com/marcsicr/fds-vscode-syntax.git"
   },
+  "publisher": "msimon@inducontrol.com",
   "engines": {
     "vscode": "^1.71.0"
   },
@@ -35,7 +36,8 @@
         ],
         "extensions": [
           ".f",
-          ".r"
+          ".r",
+          ".h"
         ],
         "configuration": "./language-configuration.json"
       }
