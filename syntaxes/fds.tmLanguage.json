@@ -83,7 +83,7 @@
           }
         },
         {
-          "match": "(_?read|next|prev)(\\s+\\w+)(\\s+nsr)=([\\w]+)?",
+          "match": "(_?read|_?next|_?prev)(\\s+\\w+)(\\s+nsr)=([\\w]+)?",
           "captures": {
             "1": { "name": "support.function.file.fds" },
             "2": { "name": "variable.other.file.fds" },
