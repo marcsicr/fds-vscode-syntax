@@ -50,7 +50,7 @@
     "file": {
       "patterns": [
         {
-          "match": "(!x?file)\\s([\\w]+)\\s([@\\w]+)((\\s(dbs)[=]([\\w]+)))?",
+          "match": "(!xfile|!file|!cfile|!dfile)\\s([\\w]+)(\\s[@\\w]+)?((\\s(dbs)[=]([\\w]+)))?",
           "captures": {
             "1": { "name": "support.function.fds" },
             "2": { "name": "variable.other.definition.fds" },
@@ -63,16 +63,43 @@
             "1": { "name": "support.function.fds" },
             "2": { "name": "keyword.other.fds" }
           }
+        },
+        {
+          "match": "(_?start)(\\s+\\w+)",
+          "captures": {
+            "1": { "name": "support.function.file.fds" },
+            "2": { "name": "variable.other.file.fds" }
+          }
+        },
+        {
+          "match": "(_?(read|next|prev))(\\s+\\w+)(\\s+nsr)=([\\w]+)?",
+          "captures": {
+            "1": { "name": "support.function.file.fds" },
+            "2": { "name": "variable.other.file.fds" },
+            "3": { "name": "variable.language.nsr.fds" },
+            "4": { "name": "entity.name.tag.fds" }
+          }
+        },
+        {
+          "match": "(rewind|clearbuf)(\\s+\\w+)",
+          "captures": {
+            "1": { "name": "support.function.file.fds" },
+            "2": { "name": "variable.other.file.fds" }
+          }
         }
       ]
     },
     "includes": {
-      "match": "^\\s*(#\\s*include)\\s+(\"[\\w]+.h\")$",
-      "captures": {
-        "0": { "name": "meta.processor.include" },
-        "1": { "name": "keyword.control.directive.include.fds" },
-        "2": { "name": "string.quoted.double.include.fds" }
-      }
+      "patterns": [
+        {
+          "match": "^\\s*(#\\s*include)\\s+((\"[\\w]+.h\")|(<[\\w]+.h>))$",
+          "captures": {
+            "0": { "name": "meta.processor.include" },
+            "1": { "name": "keyword.control.directive.include.fds" },
+            "2": { "name": "string.quoted.include.fds" }
+          }
+        }
+      ]
     },
 
     "variables": {
@@ -181,6 +208,13 @@
         {
           "match": "^(\\w*)([\\t\\\\]*$)",
           "captures": { "1": { "name": "entity.name.tag.fds" } }
+        },
+        {
+          "match": "(!proc)+(\\s+[\\w]+)",
+          "captures": {
+            "1": { "name": "support.function.fds" },
+            "2": { "name": "entity.name.tag.fds" }
+          }
         }
       ]
     },
