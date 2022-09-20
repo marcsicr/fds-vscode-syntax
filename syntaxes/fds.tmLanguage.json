@@ -50,11 +50,22 @@
     "file": {
       "patterns": [
         {
-          "match": "(!xfile|!file|!cfile|!dfile)\\s([\\w]+)(\\s[@\\w]+)?((\\s(dbs)[=]([\\w]+)))?",
+          "match": "(!xfile|!file|!cfile|!dfile)\\s([.\\w]+)(\\s[@\\w]+)?((\\s(dbs)[=]([\\w]+)))?",
           "captures": {
             "1": { "name": "support.function.fds" },
             "2": { "name": "variable.other.definition.fds" },
-            "3": { "name": "entity.name.type.fds" }
+            "3": { "name": "entity.name.type.fds" },
+            "4": {
+              "patterns": [
+                {
+                  "match": "\\s(dbs)=([\\w]+)",
+                  "captures": {
+                    "1": { "name": "variable.language.dbs.fds" },
+                    "2": { "name": "string.dbs.name.fds" }
+                  }
+                }
+              ]
+            }
           }
         },
         {
@@ -72,12 +83,28 @@
           }
         },
         {
-          "match": "(_?(read|next|prev))(\\s+\\w+)(\\s+nsr)=([\\w]+)?",
+          "match": "(_?read|next|prev)(\\s+\\w+)(\\s+nsr)=([\\w]+)?",
           "captures": {
             "1": { "name": "support.function.file.fds" },
             "2": { "name": "variable.other.file.fds" },
             "3": { "name": "variable.language.nsr.fds" },
             "4": { "name": "entity.name.tag.fds" }
+          }
+        },
+        {
+          "match": "(insert)(\\s+\\w+)(\\s+re)=([\\w]+)?",
+          "captures": {
+            "1": { "name": "support.function.file.fds" },
+            "2": { "name": "variable.other.file.fds" },
+            "3": { "name": "variable.language.re.fds" },
+            "4": { "name": "entity.name.tag.fds" }
+          }
+        },
+        {
+          "match": "(delete)(\\s+\\w+)?",
+          "captures": {
+            "1": { "name": "support.function.file.fds" },
+            "2": { "name": "variable.other.file.fds" }
           }
         },
         {
